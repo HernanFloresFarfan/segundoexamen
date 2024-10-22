@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Gestión de productos</title>
+</head>
+<body>
+   <header> 
+    <div class="info">
+        <h2>SEGUNDO PARCIAL</h2>
+        <h3>NOMBRE: Hernan Flores Farfan</h3>
+        <h3>Carnet: 13552101</h3>
+    </div>
+        <h1>Gestión de productos</h1>
+        
+    </header>
+    
+        <button type="submit">Agregar Producto</button>
+    
+
+    <main>  
+        <table border="4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Categoría</th>
+                    <th>Acciones</th>
+             </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.id }}</td>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.fecha_vencimiento }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>
+                    <a href="/eliminar/{{ producto.id }}">Eliminar</a> |
+                    <a href="/editar/{{ producto.id }}">Editar</a> <!-- Link para editar -->
+                    </td>
+             </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
